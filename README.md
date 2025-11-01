@@ -25,8 +25,8 @@
 　　＊画面フロー：管理画面→詳細画面（モーダル表示）（画面内ボタン押下により遷移）
 　・phpMyAdmin:http://localhost:8080
 　・テスト用ログインアカウント
-　　＊メール: test@example.com
-　　＊パスワード: password123
+　　＊メール: test@gmail.com
+　　＊パスワード: coachtech1106
 
 ##　使用技術（実行環境）
 　・php:8.1-fpm（Dockerfile）

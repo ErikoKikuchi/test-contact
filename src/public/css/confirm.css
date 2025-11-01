@@ -1,0 +1,99 @@
+.confirm__content{
+    border-top: rgb(186, 168, 153) 1px solid;
+    margin: 0 auto;
+    padding: 30px 15px;
+    max-width: 1230px;
+    display: flex;
+    flex-direction: column;
+}
+.confirm__title{
+    color: rgb(186, 168, 153);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    font-family: Georgia;
+}
+.confirm-form{
+    margin:10px;
+
+}
+
+.confirm-table{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.confirm-table__inner{
+    width:70%;
+}
+
+
+.confirm-table__header{
+    border:white 0.5px solid;
+    background-color: rgb(186, 168, 153);
+    color: white;
+    width: 40%;
+    font-weight: 200;
+    text-align: left;
+    padding-left: 30px;
+
+
+}
+.confirm-table__text {
+    border: rgb(186, 168, 153) 0.5px solid;
+    flex:1;
+
+}
+.confirm-table__text-last_name{
+    border: none;
+    height: 40px;
+    padding-left: 20px;
+    width: 20%;
+}
+.confirm-table__text-gender,
+.confirm-table__text-mail,
+.confirm-table__text-address,
+.confirm-table__text-tel,
+.confirm-table__text-select
+{
+    border:none;
+    height: 40px;
+    padding-left: 20px;
+    width:100%;
+}
+.confirm-table__textarea {
+    border: none;
+    height: 40px;
+    padding-left: 20px;
+    width: 100%;
+    height:80px;
+}
+.confirm-table__text-first_name{
+    border: none;
+    height: 40px;
+}
+.confirm__buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 20px;
+}
+.confirm__button--submit{
+    background-color:rgb(58, 0, 0);
+    color:white;
+    width:200%;
+
+}
+.edit-form {
+    margin: 0;
+    padding-left:50px;
+}
+.edit-form__button{
+    border-bottom: rgb(186, 168, 153) 0.5px solid;;
+}
+.edit-form__button--submit{
+    border: none;
+    background-color: white;
+}

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ModalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,16 +20,16 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', [ContactController::class, 'index']);
 Route::post('/contacts/confirm',[ContactController::class,'confirm']);
-Route::post('/confirm',[ContactController::class,'store']);
+Route::post('/contacts/store',[ContactController::class,'store']);
+Route::post('/contacts/edit',[ContactController::class,'edit']);
+Route::get('/thanks',[ContactController::class,'thanks']);
 Route::middleware(['auth'])->group(function(){
-    Route::get('/admin',[AdminController::class,'show']);
-    Route::get('/admin/users/{user}',[AdminController::class,'show']);
-    Route::delete('/admin/users/{user}',[AdminController::class,'destroy']);
+    Route::get('/admin',[AdminController::class,'index']);
     Route::get('/admin/search',[AdminController::class,'search']);
     Route::get('/admin/reset',[AdminController::class,'reset']);
-
+    Route::get('/modal', [ModalController::class, 'modal']);
 });
 Route::get('/login',[LoginController::class,'index']);
-Route::get('/register',[LoginController::class,'create']);
-Route::post('/logout',[LoginController::class,'logout'])->middleware('auth')->name('logout');
-
+Route::post('/login',[LoginController::class,'login']);
+Route::get('/register',[RegisterController::class,'index']);
+Route::post('/register/store',[RegisterController::class,'store']);

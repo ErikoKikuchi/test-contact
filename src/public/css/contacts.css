@@ -1,0 +1,126 @@
+.contacts__content{
+    border-top: rgb(186, 168, 153) 1px solid;
+    margin:  auto;
+    padding: 30px 15px;
+    max-width: 1230px;
+}
+.contacts-form__title{
+    color: rgb(104, 68, 39);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    font-family: Georgia;
+}
+.contacts-form{
+
+    margin: 0 auto;
+
+}
+.contacts-form__group {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
+}
+.contacts-form__label-item{
+    font-size: 12px;
+}
+.contacts-form__group-title{
+    width:30%;
+    font-size: 16px;
+}
+.contacts-form__group-content{
+    flex:1;
+}
+
+.contacts-form__label--required{
+    color:red;
+
+}
+.contacts-form__input-text {
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+    margin:10px;
+    align-items: center;
+}
+
+.contacts-form__input-last_name--colored{
+
+    background-color:rgb(241, 241, 241);
+    width:45%;
+    height:30px;
+    padding-left: 20px;
+}
+
+.contacts-form__input-first_name--colored{
+    background-color:rgb(241, 241, 241);
+    width: 45%;
+    height: 30px;
+    padding-left: 20px;
+}
+
+.contacts-form__input-radio
+{
+    font-size:16px;
+    display:flex;
+    gap:100px;
+    margin:10px;
+}
+
+.contacts-form__input-radio label{
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+}
+.contacts-form__input-email--colored{
+    background-color: rgb(241, 241, 241);
+    width:100%;
+    height:30px;
+    padding-left: 20px;
+}
+.contacts-form__input-tel--colored{
+    background-color: rgb(241, 241, 241);
+    height:30px;
+    text-align: center;
+}
+.contacts-form__input-address--colored{
+    background-color: rgb(241, 241, 241);
+    width: 100%;
+    height: 30px;
+    padding-left: 20px;
+}
+select {
+    background-color: rgb(241, 241, 241);
+    width:50% ;
+    margin:10px;
+    height:30px;
+}
+.contacts-form__input-textarea--colored{
+    background-color: rgb(241, 241, 241);
+    width:100%;
+    height:80px;
+}
+.contacts-form__button{
+    display: flex;
+    justify-content: center;
+}
+.contacts-form__button--submit{
+    display: block;
+    text-align: center;
+    width: 10%;
+    height: 30px;
+    background-color: rgb(58, 0, 0);
+    color:white;
+}
+.form__error{
+    margin:10px;
+
+}
+.form__error--no-name,
+.error-message{
+    color:red;
+    font-size: 12px;
+}
