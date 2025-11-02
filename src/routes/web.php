@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/search',[AdminController::class,'search']);
     Route::get('/admin/reset',[AdminController::class,'reset']);
     Route::get('/modal', [ModalController::class, 'modal']);
+    Route::get('/admin/csv',[AdminController::class,'exportCsv']);
 });
 Route::get('/login',[LoginController::class,'index']);
 Route::post('/login',[LoginController::class,'login']);

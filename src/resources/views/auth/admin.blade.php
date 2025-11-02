@@ -47,10 +47,15 @@
             <button class="reset-form__button--submit" type="submit">リセット</button>
         </div>
     </form>
-    <div class="admin-index__table">
-        <div class ="admin-index__pagination"">
-        {{$contacts->links('pagination::tailwind')}}
+    <div class="table-controls">
+        <div class="csv-export" >
+            <a class="csv-export__submit "href="/admin/csv" >エクスポート</a>
         </div>
+        <div class ="admin-index__pagination">
+            {{$contacts->links('pagination::tailwind')}}
+        </div>
+    </div>
+    <div class="admin-index__table">
         <table class="admin-table__inner">
             <thead>
                 <tr class="admin-table__row">
