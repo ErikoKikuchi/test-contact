@@ -10,6 +10,7 @@ class Modal extends Component
     public $contactId;
     public $showModal = false;
 
+
     public function mount($contactId)
     {
         $this->contactId = $contactId;
@@ -29,8 +30,8 @@ class Modal extends Component
     {
     if ($this->contactId) {
         Contact::find($this->contactId)?->delete();
-        $this->closeModal();   // モーダルを閉じる
-        $this->emit('refreshContacts');
+        $this->closeModal();
+
     }
 }
     public function render()

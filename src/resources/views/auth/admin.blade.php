@@ -20,7 +20,7 @@
     <h2 class="admin-index__title">Admin</h2>
     <form class="search-form" action="/admin/search" method="get">
         <div class="search-form__item">
-            <input class="search-form__item--input" type="text" name="keyword" value="{{request('keyword')}}" placeholder="名前やメールアドレスを入力してください">
+            <input class="search-form__item--input" type="text" name="keyword" value="{{old('keyword')}}" placeholder="名前やメールアドレスを入力してください">
             <select class="search-form__item--gender-select" name="gender" >
                 <option value="">性別</option>
                 <option value="1"{{ request('gender')==1 ? 'selected' : ''}}>男性</option>
@@ -35,7 +35,7 @@
                 </option>
                 @endforeach
             </select>
-            <input class="search-form__item--date-select" type="date"name="date" value="{{ request('date') }}">
+            <input class="search-form__item--date-select" type="date"name="created_at" value="{{ old('created_at') }}">
             </input>
         </div>
         <div class="search-form__button">
