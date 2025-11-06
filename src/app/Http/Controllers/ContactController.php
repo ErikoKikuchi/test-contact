@@ -13,7 +13,7 @@ class ContactController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('contacts',compact('categories'));
+    return view('contacts',compact('categories'));
     }
     //お問い合わせ確認画面表示
     public function confirm(ContactRequest $request)
@@ -30,14 +30,15 @@ class ContactController extends Controller
         'building',
         'category_id',
         'detail'
-    ]);
-    $genderText = [1=>'男性',2=>'女性',3=>'その他'];
-    $contact['gender_text']=$genderText[$contact['gender']];
-    $category = Category::find($request->category_id);
-    $contact['category_content'] = $category->content;
+        ]);
+        $genderText = [1=>'男性',2=>'女性',3=>'その他'];
+        $contact['gender_text']=$genderText[$contact['gender']];
+        $category = Category::find($request->category_id);
+        $contact['category_content'] = $category->content;
 
     return view('confirm',compact('contact'));
     }
+
     //修正のため入力画面に戻る
     public function edit(Request $request){
         return redirect('/')->withInput($request->all());
@@ -56,12 +57,7 @@ class ContactController extends Controller
         'category_id',
         'detail'
         ]);
-
         Contact::create($contact);
-        return redirect('/thanks');
-    }
-    public function thanks()
-    {
-        return view('thanks');
+    return redirect('/thanks');
     }
 }

@@ -19,10 +19,7 @@
                 <tr class = "confirm-table__row">
                     <th class = "confirm-table__header">性別</th>
                     <td class="confirm-table__text">
-                        <!--表示用-->
                         <input class="confirm-table__text-gender" type="text" value="{{$contact['gender_text']}}" readonly>
-                        <!--送信用-->
-                        <input type="hidden" name="gender" value="{{$contact['gender']}}">
                     </td>
                 </tr>
                 <tr class = "confirm-table__row">
@@ -34,14 +31,13 @@
                     <tr class = "confirm-table__row">
                     <th class = "confirm-table__header">電話番号</th>
                     <td class="confirm-table__text">
-                        <!--表示用-->
                         <input class="confirm-table__text-tel" type="tel" value="{{$contact['tel1']}}{{$contact['tel2']}}{{$contact['tel3']}}" readonly>
                     </td>
                 </tr>
                 <tr class = "confirm-table__row">
                     <th class = "confirm-table__header">住所</th>
                     <td class="confirm-table__text">
-                            <input class="confirm-table__text-address" type="text" name="address" value="{{ $contact['address'] }}" readonly />
+                        <input class="confirm-table__text-address" type="text" name="address" value="{{ $contact['address'] }}" readonly />
                     </td>
                 </tr>
                 <tr class = "confirm-table__row">
@@ -53,7 +49,6 @@
                 <tr class = "confirm-table__row">
                     <th class = "confirm-table__header">お問い合わせの種類</th>
                     <td class="confirm-table__text">
-                        <!--表示用-->
                         <input class="confirm-table__text-select" type="text" value="{{$contact['category_content']}}" readonly>
                     </td>
                 </tr>

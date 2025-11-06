@@ -8,7 +8,7 @@
 <!--入力フォーム-->
 <div class = "contacts__content">
     <h2 class = "contacts-form__title">Contact<h2>
-    <form class = "contacts-form" action = "/contacts/confirm" method = "post">
+    <form class = "contacts-form" action = "/contacts/confirm" method = "post" >
         @csrf
         <div class = "contacts-form__group">
             <div class = "contacts-form__group-title">

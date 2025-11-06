@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Contact;
 use App\Models\Category;
-use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Response;
 
 class AdminController extends Controller
@@ -15,8 +13,7 @@ class AdminController extends Controller
     public function index(){
         $contacts = Contact::with('category')->paginate(8)->withQueryString();
         $categories=Category::all();
-
-        return view ('auth.admin',compact('contacts','categories'));
+    return view ('auth.admin',compact('contacts','categories'));
     }
 
 
@@ -24,25 +21,51 @@ class AdminController extends Controller
     public function search(Request$request){
         $contacts= Contact::with('category')->GenderSearch($request->gender)->CategorySearch($request->category_id)->KeywordSearch($request->keyword)->DateSearch($request->created_at)->paginate(8)->withQueryString();
         $categories =Category::all();
-        return view('auth.admin',compact('contacts','categories'));
+    return view('auth.admin',compact('contacts','categories'));
     }
 
     //リセット
     public function reset(){
-    $contacts = Contact::with('category')->paginate(8)->withQueryString();
-    $categories = Category::all();
-
+        $contacts = Contact::with('category')->paginate(8)->withQueryString();
+        $categories = Category::all();
     return view('auth.admin', compact('contacts', 'categories'));
     }
 
     //CSV出力
-    public function exportCsv(){
-        $contacts = Contact::with('category')->get();
-    
-    $csvHeader = [
+    public function exportCsv(Request$request){
+        //絞り込み条件の取得
+        $keyword = $request->input('keyword');
+        $gender = $request->input('gender');
+        $category_id = $request->input('category_id');
+        $date =$request->input('date');
+
+        $query = Contact::query()->with('category');
+
+        //絞り込み条件をif文追加
+        if (!empty($category_id)) {
+        $query->where('category_id', $category_id);}
+
+        if (!empty($keyword)) {
+        $query->where(function ($q) use ($keyword) {
+        $q->where('first_name', 'like', '%' . $keyword . '%')
+            ->orWhere('last_name', 'like', '%' . $keyword . '%')
+            ->orWhere('email', 'like', '%' . $keyword . '%');
+        });
+        }
+        if (!empty($gender) && $gender !== 'all') {
+        $query->where('gender', $gender);
+        }
+        if (!empty($date)) {
+        $query->whereDate('created_at', $date);
+        }
+        //絞り込み結果を取得
+        $contacts=$query->get();
+
+        //CSV設定
+        $csvHeader = [
         'ID','お問い合わせ内容','姓','名','性別','メールアドレス','電話番号','住所','建物','詳細','お問い合わせ日'
-    ];
-    $temps = [];
+        ];
+        $temps = [];
     array_push($temps, $csvHeader);
 
     foreach ($contacts as $contact) {
@@ -61,7 +84,6 @@ class AdminController extends Controller
         $gender = $genderText[$contact->gender];
         $category = $categoryText[$contact->category_id];
 
-
         $temp = [
             $contact->id,
             $category,
@@ -71,6 +93,7 @@ class AdminController extends Controller
             $contact->email,
             $contact->tel,
             $contact->address,
+            $contact->building,
             $contact->detail,
             $contact->created_at,
             ];
@@ -84,7 +107,7 @@ class AdminController extends Controller
         $csv = str_replace(PHP_EOL, "\r\n", stream_get_contents($stream));
         $csv = mb_convert_encoding($csv, 'SJIS-win', 'UTF-8');
         $now = now();
-        $filename = "ユーザー一覧（全件：" . $now->format('Y年m月d日'). "）.csv";
+        $filename = "コンタクト一覧（絞り込み：" . $now->format('Y年m月d日'). "）.csv";
         $headers = array(
             'Content-Type' => 'text/csv',
             'Content-Disposition' => 'attachment; filename='.$filename,

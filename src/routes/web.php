@@ -22,13 +22,12 @@ Route::get('/', [ContactController::class, 'index']);
 Route::post('/contacts/confirm',[ContactController::class,'confirm']);
 Route::post('/contacts/store',[ContactController::class,'store']);
 Route::post('/contacts/edit',[ContactController::class,'edit']);
-Route::get('/thanks',[ContactController::class,'thanks']);
 Route::middleware(['auth'])->group(function(){
     Route::get('/admin',[AdminController::class,'index']);
     Route::get('/admin/search',[AdminController::class,'search']);
     Route::get('/admin/reset',[AdminController::class,'reset']);
     Route::get('/modal', [ModalController::class, 'modal']);
-    Route::get('/admin/csv',[AdminController::class,'exportCsv']);
+    Route::get('/admin/csv',[AdminController::class,'exportCsv'])->name('admin.csv');
 });
 Route::get('/login',[LoginController::class,'index']);
 Route::post('/login',[LoginController::class,'login']);

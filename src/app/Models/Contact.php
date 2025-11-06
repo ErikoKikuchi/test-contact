@@ -59,7 +59,7 @@ class Contact extends Model
 
     public function scopeGenderSearch($query, $gender)
     {
-    if (!empty($gender)) {
+    if (!empty($gender) && $gender !== 'all') {
         $query->where('gender', $gender);
     }
         return $query;

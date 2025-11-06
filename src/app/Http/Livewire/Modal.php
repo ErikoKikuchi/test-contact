@@ -10,7 +10,6 @@ class Modal extends Component
     public $contactId;
     public $showModal = false;
 
-
     public function mount($contactId)
     {
         $this->contactId = $contactId;
@@ -37,11 +36,11 @@ class Modal extends Component
     public function render()
     {
         $selectedContact = null;
-        
+
         if ($this->showModal && $this->contactId) {
             $selectedContact = Contact::with('category')->find($this->contactId);
         }
-        return view('livewire.modal', compact('selectedContact'));
+    return view('livewire.modal', compact('selectedContact'));
     }
 
 

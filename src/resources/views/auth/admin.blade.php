@@ -22,7 +22,8 @@
         <div class="search-form__item">
             <input class="search-form__item--input" type="text" name="keyword" value="{{old('keyword')}}" placeholder="名前やメールアドレスを入力してください">
             <select class="search-form__item--gender-select" name="gender" >
-                <option value="">性別</option>
+                <option value="" >性別</option>
+                <option value="all"{{request('gender')==='all' ? 'selected' : ''}}>全て</option>
                 <option value="1"{{ request('gender')==1 ? 'selected' : ''}}>男性</option>
                 <option value="2"{{ request('gender')==2 ? 'selected' : ''}}>女性</option>
                 <option value="3"{{ request('gender')==3 ? 'selected' : ''}}>その他</option>
@@ -49,7 +50,7 @@
     </form>
     <div class="table-controls">
         <div class="csv-export" >
-            <a class="csv-export__submit "href="/admin/csv" >エクスポート</a>
+            <a class="csv-export__submit "href="{{route('admin.csv' ,request()->query())}}">エクスポート</a>
         </div>
         <div class ="admin-index__pagination">
             {{$contacts->links('pagination::tailwind')}}
